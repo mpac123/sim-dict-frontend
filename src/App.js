@@ -1,32 +1,47 @@
 import React from 'react';
 import './App.css';
-import { Container, Divider, Header, Icon, Button, Input } from 'semantic-ui-react';
-import {Map, Marker, Popup} from 'react-leaflet'
+import { Container, Divider, Header, Icon, Button, Input, Menu } from 'semantic-ui-react';
+import {Map, TileLayer, GeoJSON} from 'react-leaflet'
+import data from './resources/custom.geo.json';
 
 function App() {
-  const position = [51.505, -0.09]
+  console.log(data)
+  const position = [51,18]
+  const france = {
+    type: "FeatureCollection",
+    features: [{
+      type: "Feature",
+      geometry: data.features[13].geometry
+      }]
+    }
   return (
     <Container>
-    <Header as='h2' icon inverted textAlign='center'>
-          <Icon name='grid globe' />
-          Maptionary
-        </Header>
-    <Divider />
-    <div className="search-box">
-      <Input type='text' placeholder='Type word in English...' action>
-      <input />
-      <Button type='submit'>Search</Button>
-      </Input>
-    </div>
-    <div className="map">
-      <Map center={position} zoom={13}>
-      <Marker position={position}>
-          <Popup>
-            A pretty CSS3 popup. <br/> Easily customizable.
-          </Popup>
-        </Marker>
+      <Menu inverted pointing secondary>
+        <Menu.Item>
+          <h2><Icon name="globe"/> Maptionary</h2>
+        </Menu.Item>
+          <Menu.Menu  position="right">
+            <Menu.Item>About us</Menu.Item>
+            <Menu.Item>Contribute</Menu.Item>
+          </Menu.Menu>
+      </Menu>
+            
+      <Divider />
+      <div className="search-box">
+        <Input type='text' placeholder='Type word in English...' action>
+        <input />
+        <Button type='submit'>Search</Button>
+        </Input>
+      </div>
+      <Divider hidden/>
+        <Map center={position} zoom={4} style={{height: "640px"}}>
+        <TileLayer
+        url=""
+        />
+        <GeoJSON data={data} color="#fff"/>
+        <GeoJSON data={france} color="lime"/>
+        
       </Map>
-    </div>
     </Container>
   );
 }

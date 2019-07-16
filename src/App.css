@@ -1,5 +1,5 @@
 html, body {
-  background-color: #252839 !important;
+  background-color: #262439 !important;
   padding-top: 10px
 }
 p {
@@ -23,4 +23,8 @@ p > span {
   padding: 20px
 }
 
-.leaflet-container{background-color:#c5e8ff;}
+.leaflet-container{background-color:#402C57;}
+
+.leaflet-interactive{
+  stroke-width: 0.5
+}
