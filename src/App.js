@@ -18,7 +18,7 @@ function App() {
     <Container>
       <Menu inverted pointing secondary>
         <Menu.Item>
-          <h2><Icon name="globe"/> Maptionary</h2>
+          <Header inverted as="h2"><Icon name="globe"/> Maptionary</Header>
         </Menu.Item>
           <Menu.Menu  position="right">
             <Menu.Item>About us</Menu.Item>
@@ -28,7 +28,7 @@ function App() {
             
       <Divider />
       <div className="search-box">
-        <Input type='text' placeholder='Type word in English...' action>
+        <Input type='text' placeholder='Type a word in English...' action>
         <input />
         <Button type='submit'>Search</Button>
         </Input>
