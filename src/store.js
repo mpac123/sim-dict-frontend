@@ -1,7 +1,11 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "./reducers";
-import { watchSearchTranslations, helloSaga } from "./sagas";
+import {
+  watchSearchTranslations,
+  helloSaga,
+  watchGetTranslations
+} from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
@@ -19,6 +23,7 @@ if (window.__REDUX_DEVTOOLS_EXTENSION__ !== undefined) {
 const store = createStore(rootReducer, {}, composed);
 sagaMiddleware.run(helloSaga);
 sagaMiddleware.run(watchSearchTranslations);
+sagaMiddleware.run(watchGetTranslations);
 
 export const action = (type, payload) => {
   if (payload) {

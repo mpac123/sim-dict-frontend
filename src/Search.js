@@ -7,7 +7,7 @@ import _ from "lodash";
 import * as at from "./actions";
 import { connect } from "react-redux";
 
-const Search = ({ loading, suggestions }) => {
+const Search = ({ loading, suggestions, onSelect }) => {
   const [loadingCall, setLoading] = useState(false);
 
   const debouncedSearch = _.debounce(async search => {
@@ -16,14 +16,10 @@ const Search = ({ loading, suggestions }) => {
       action(at.SEARCH_TRANSLATIONS, { search });
       setLoading(false);
     }
-  }, 500);
+  }, 300);
 
   const changeVal = e => {
     debouncedSearch(e.target.value);
-  };
-
-  const translationSelect = e => {
-    console.log(e.target.value);
   };
 
   return (
@@ -45,9 +41,9 @@ const Search = ({ loading, suggestions }) => {
               <Grid.Column textAlign="center">
                 <List>
                   {suggestions.map(s => (
-                    <List.Item onClick={translationSelect} key={s}>
+                    <List.Item key={s}>
                       <List.Content>
-                        <List.Header as="a">{s}</List.Header>
+                        <List.Header as="a" onClick={() => onSelect(s)}>{s}</List.Header>
                       </List.Content>
                     </List.Item>
                   ))}
@@ -62,7 +58,8 @@ const Search = ({ loading, suggestions }) => {
 };
 
 Search.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  onSelect: PropTypes.func.isRequired
 };
 
 export default connect(state => ({

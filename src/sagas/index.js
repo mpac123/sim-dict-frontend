@@ -1,13 +1,15 @@
 import { takeEvery } from "redux-saga/effects";
 import * as at from "../actions";
-import { searchTranslations } from "./apiSagas";
+import { searchTranslations, getTranslations } from "./apiSagas";
 
-function* helloSaga() {
+export function* helloSaga() {
   yield console.log("Hello Sagas!");
 }
 
-function* watchSearchTranslations() {
+export function* watchSearchTranslations() {
   yield takeEvery(at.SEARCH_TRANSLATIONS, searchTranslations);
 }
 
-export { helloSaga, watchSearchTranslations };
+export function* watchGetTranslations() {
+  yield takeEvery(at.GET_TRANSLATIONS, getTranslations);
+}
