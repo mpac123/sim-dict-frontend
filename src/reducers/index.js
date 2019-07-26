@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import hello from "./hello";
+import translations from "./translations";
+import loading from "./loading";
 
 export default combineReducers({
-  hello
+  translations,
+  loading
 });

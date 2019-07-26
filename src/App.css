@@ -16,13 +16,6 @@ p > span {
   text-align: center;
 }
 
-.search-box {
-  background-image: linear-gradient(to bottom right, #5C2D50, #2C2C5C);
-  border-radius: 5px;
-  text-align: center;
-  padding: 20px
-}
-
 .leaflet-container{background-color:#402C57;}
 
 .leaflet-interactive{
