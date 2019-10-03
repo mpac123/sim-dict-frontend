@@ -1,0 +1,19 @@
+.search-box {
+  background-image: linear-gradient(to bottom right, #5c2d50, #2c2c5c);
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+}
+
+.centered-context,
+.centered-context i {
+  background-image: linear-gradient(to bottom right, #5c2d50, #2c2c5c);
+  border-radius: 5px;
+  /* text-align: center; */
+  color: white;
+}
+
+.content .item {
+  color: white;
+  cursor: pointer;
+}
